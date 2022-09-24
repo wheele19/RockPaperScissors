@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        let playerscore = 0;
+        let computerscore = 0;
+        let computer_sign = '';
+        console.log(computer_sign);
+
+        function randomNumber() {
+            
+        let random_number = Math.floor(Math.random()*3)
+        console.log(random_number);
+
+        switch (random_number) {
+            case 0: 
+            return ('Rock')
+
+            case 1:
+            return ('Paper')
+
+            case 2:
+            return 'Scissors'
+
+        }
+        console.log()
+    }
+
+    let choice_before = prompt('Rock, Paper, or Scissors?');
+    console.log(choice_before);
+    document.innerhtml
+    
+    let choice = choice_before.substring(0, 1).toUpperCase() + choice_before.substring(1).toLowerCase();
+    console.log(choice.equals('ro'));
+    computer_sign = randomNumber();
+    console.log(computer_sign);
+
+    if (choice == !'Paper' && choice == !'Rock' && choice == !'Scissors') {
+        choice_before = prompt('Rock, Paper, or Scissors?');
+        choice = choice_before.substring(0, 1).toUpperCase() + choice_before.substring(1).toLowerCase();
+        console.log(choice);
+    }
+   
+
+
+
+    function Winner(){
+
+        if (choice === 'Paper' && computer_sign == 'Paper'){
+            console.log('It\'s a Tie!');
+            return 'It\'s a Tie!'
+        }
+        else if (choice === 'Paper' && computer_sign == 'Rock'){
+            console.log('You won!');
+            return 'You won!'
+        }
+        else if (choice === 'Paper' && computer_sign == 'Scissors'){
+            console.log('You lost!');
+            return 'You lost!'
+        }
+        else if (choice === 'Rock' && computer_sign == 'Scissors'){
+            console.log('You won!');
+            return 'You won!'
+        }
+        else if (choice === 'Rock' && computer_sign == 'Paper'){
+            console.log('You lost!');
+            return 'You lost!'
+        }
+        else if (choice === 'Rock' && computer_sign == 'Rock'){
+            console.log('It\'s a tie!');
+            return 'It\'s a tie!'
+        }
+        else if (choice === 'Scissors' && computer_sign == 'Scissors'){
+            console.log('It\'s a tie!');
+            return 'It\'s a tie!'
+        }
+        else if (choice === 'Scissors' && computer_sign == 'Rock'){
+            console.log('You lost!');
+            return 'You lost!'
+        }
+        else if (choice === 'Scissors' && computer_sign == 'Paper'){
+            console.log('You won!');
+            return 'You won!'
+        }
+
+
+        console.log('It\'s a DerpTie!');
+
+        return 'derp'
+    }
+
+    Winner()
+
+
+
+
+     </script>
+</body>
+</html>
