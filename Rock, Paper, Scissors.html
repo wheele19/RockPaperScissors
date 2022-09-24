@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div>Result</div>
     <script>
 
 
@@ -39,7 +41,7 @@
     document.innerhtml
     
     let choice = choice_before.substring(0, 1).toUpperCase() + choice_before.substring(1).toLowerCase();
-    console.log(choice.equals('ro'));
+    console.log(choice);
     computer_sign = randomNumber();
     console.log(computer_sign);
 
@@ -56,6 +58,7 @@
 
         if (choice === 'Paper' && computer_sign == 'Paper'){
             console.log('It\'s a Tie!');
+
             return 'It\'s a Tie!'
         }
         else if (choice === 'Paper' && computer_sign == 'Rock'){
@@ -91,13 +94,17 @@
             return 'You won!'
         }
 
-
+    
         console.log('It\'s a DerpTie!');
 
         return 'derp'
     }
 
-    Winner()
+
+    const body = document.body;
+    const div = document.createElement("div");
+    body.append(div);
+    div.innerHTML = Winner()
 
 
 
