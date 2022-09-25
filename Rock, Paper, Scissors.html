@@ -7,6 +7,20 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        button {
+            height: 48px; width: 120px; background-color: beige;
+        }
+    </style>
+    <div style="display: flex;">playerscore: <div id="playerscore">0</div>
+    </div>
+    <div style="display: flex;">computerscore: <div id="computerscore">0</div>
+</div>
+    <button id="Rock">Rock</button>
+    <button id="Paper">Paper</button>
+    <button id="Scissors">Scissors</button>
+
+    <div>Result</div>
     <script>
 
 
@@ -34,44 +48,42 @@
         console.log()
     }
 
-    let choice_before = prompt('Rock, Paper, or Scissors?');
-    console.log(choice_before);
-    document.innerhtml
-    
-    let choice = choice_before.substring(0, 1).toUpperCase() + choice_before.substring(1).toLowerCase();
-    console.log(choice.equals('ro'));
-    computer_sign = randomNumber();
+    let choice = '';
+    let buttons = document.querySelectorAll('button');
+
+           
+    console.log(choice);
     console.log(computer_sign);
 
-    if (choice == !'Paper' && choice == !'Rock' && choice == !'Scissors') {
-        choice_before = prompt('Rock, Paper, or Scissors?');
-        choice = choice_before.substring(0, 1).toUpperCase() + choice_before.substring(1).toLowerCase();
-        console.log(choice);
-    }
-   
+ 
 
 
-
-    function Winner(){
+    function playRound(){
 
         if (choice === 'Paper' && computer_sign == 'Paper'){
             console.log('It\'s a Tie!');
+
             return 'It\'s a Tie!'
         }
         else if (choice === 'Paper' && computer_sign == 'Rock'){
             console.log('You won!');
+            playerscore++;
+            console.log(playerscore);
             return 'You won!'
         }
         else if (choice === 'Paper' && computer_sign == 'Scissors'){
             console.log('You lost!');
+            computerscore++;
             return 'You lost!'
         }
         else if (choice === 'Rock' && computer_sign == 'Scissors'){
             console.log('You won!');
+            playerscore++;
             return 'You won!'
         }
         else if (choice === 'Rock' && computer_sign == 'Paper'){
             console.log('You lost!');
+            computerscore++;
             return 'You lost!'
         }
         else if (choice === 'Rock' && computer_sign == 'Rock'){
@@ -84,20 +96,67 @@
         }
         else if (choice === 'Scissors' && computer_sign == 'Rock'){
             console.log('You lost!');
+            computerscore++;
             return 'You lost!'
         }
         else if (choice === 'Scissors' && computer_sign == 'Paper'){
             console.log('You won!');
+            playerscore++;
             return 'You won!'
         }
 
-
+    
         console.log('It\'s a DerpTie!');
 
-        return 'derp'
+        return 'Not a valid entry'
     }
 
-    Winner()
+
+    playerscore_div = document.getElementById('playerscore');
+    computerscore_div = document.getElementById('computerscore');
+
+   
+
+
+    const body = document.body;
+    const div = document.createElement("div");
+    body.append(div);
+    buttons.forEach(button => button.addEventListener('click', function() {
+        console.log(button.innerHTML);
+        choice = button.id;
+        computer_sign = randomNumber();
+        div.innerHTML = playRound()
+        updateScore(playerscore, playerscore_div, computerscore, computerscore_div, button);
+
+
+        return
+    }
+    ))
+
+    function updateScore (playerscore, playerscore_div, computerscore, computerscore_div, button) {
+        console.log(playerscore_div.innerHTML);
+        playerscore_div.innerHTML = playerscore;
+        computerscore_div.innerHTML = computerscore;
+
+
+    if (computerscore == 5) {
+        buttons.forEach(button => button.disabled = 'true');
+        alert('You lose!');
+ 
+
+
+    }
+    else if (playerscore >= 5) {
+        buttons.forEach(button => button.disabled = 'true');
+        alert('You Win!');
+    }
+
+
+    }
+    
+    
+    
+
 
 
 
